@@ -1,0 +1,91 @@
+//Name:Yasmeen Begum
+
+//Roll No:1005-22-742417
+
+//1.1 Linear Search Iterative Approach
+
+#include <stdio.h>
+
+#include<time.h>
+
+int main()
+
+{
+
+clock_t start,end;
+
+double execution_time;
+
+start=clock();
+
+int arr[11500]; 
+
+FILE *fptr;
+
+int i=0,k,flag=0;
+
+	//open file for writing
+	fptr=fopen("inputFile.txt","w");
+	
+	if(fptr!=NULL){
+	printf("File created successfully.\n");
+	}
+	else{
+	printf("Failed to create the file.\n");
+	return -1;
+	}
+	for(i=0;i<11500;i++){
+		
+int n=rand()%1000;
+
+	fprintf(fptr,"%d\n",n);
+	}
+	fclose(fptr);
+	//Creating stack with 11500 random numbers
+	//reading a file
+	i=0;
+	fptr=fopen("inputFile.txt","r");
+	while((fscanf(fptr,"%d",&arr[i]))!=EOF){
+		i++;
+	}
+	fclose(fptr);
+
+printf("Enter a number to search:");
+
+scanf("%d",&k);
+
+
+for(i=0;i<11500;i++)
+
+{
+
+if(arr[i]==k)
+
+{
+
+flag=1;
+
+printf("%d is present at index %d", k,i);
+
+break; 
+
+}
+}
+
+if(flag == 0)
+
+{
+
+printf("%d is not present in the array",k);
+
+}
+
+end=clock();
+
+execution_time=((double)(end-start))/CLOCKS_PER_SEC;
+
+printf("\nTime taken to execute in second: %f",execution_time);
+
+return 0;
+
+}
